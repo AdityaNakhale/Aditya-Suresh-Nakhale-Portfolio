@@ -4,28 +4,17 @@ import { scrollToTarget } from '@/src/lib/scroll';
 
 export const Hero: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [autoplayBlocked, setAutoplayBlocked] = useState(false);
-
-  // Sync audio with video time
-  const handleTimeUpdate = () => {
-    const video = videoRef.current;
-    const audio = audioRef.current;
-    if (!video || !audio || isMuted) return;
-    if (Math.abs(audio.currentTime - video.currentTime) > 0.3) {
-      audio.currentTime = video.currentTime;
-    }
-  };
 
   // Autoplay attempt on load
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
 
-    // Start video muted initially as required by browsers
+    // Start video muted initially as required by browser autoplay policies
     video.muted = true;
     setIsMuted(true);
 
@@ -43,18 +32,12 @@ export const Hero: React.FC = () => {
     // Unlock sound on visitor's first user interaction anywhere
     const handleFirstInteraction = () => {
       const v = videoRef.current;
-      const a = audioRef.current;
       if (v) {
         v.muted = false;
         v.play()
           .then(() => {
             setIsMuted(false);
             setAutoplayBlocked(false);
-            if (a) {
-              a.currentTime = v.currentTime;
-              a.volume = 1.0;
-              a.play().catch(() => {});
-            }
           })
           .catch(() => {
             v.muted = true;
@@ -81,17 +64,14 @@ export const Hero: React.FC = () => {
   useEffect(() => {
     const heroEl = heroRef.current;
     const video = videoRef.current;
-    const audio = audioRef.current;
     if (!heroEl || !video) return;
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.intersectionRatio < 0.35) {
           video.pause();
-          if (audio) audio.pause();
         } else {
           video.play().catch(() => {});
-          if (audio && !isMuted) audio.play().catch(() => {});
         }
       },
       { threshold: [0, 0.35, 0.7, 1.0] }
@@ -99,12 +79,11 @@ export const Hero: React.FC = () => {
 
     observer.observe(heroEl);
     return () => observer.disconnect();
-  }, [isMuted]);
+  }, []);
 
-  // Toggle Sound Button
+  // Toggle Sound Button: Single authoritative handler for video native audio
   const toggleSound = () => {
     const video = videoRef.current;
-    const audio = audioRef.current;
     if (!video) return;
 
     if (isMuted) {
@@ -112,17 +91,9 @@ export const Hero: React.FC = () => {
       setIsMuted(false);
       setAutoplayBlocked(false);
       video.play().catch(() => {});
-      if (audio) {
-        audio.currentTime = video.currentTime;
-        audio.volume = 1.0;
-        audio.play().catch(() => {});
-      }
     } else {
       video.muted = true;
       setIsMuted(true);
-      if (audio) {
-        audio.pause();
-      }
     }
   };
 
@@ -132,15 +103,7 @@ export const Hero: React.FC = () => {
       id="hero"
       className="relative min-h-[100svh] w-full flex flex-col justify-between overflow-hidden select-none bg-[var(--paper)]"
     >
-      {/* Synchronized voice audio track */}
-      <audio
-        ref={audioRef}
-        src={`${import.meta.env.BASE_URL}hero/voice.mp3`}
-        loop
-        preload="auto"
-      />
-
-      {/* 1. GIANT GHOST WORD IN CENTER BACKGROUND (ADITYA as default text just like before) */}
+      {/* 1. GIANT GHOST WORD IN CENTER BACKGROUND (ADITYA) */}
       <div
         className="absolute inset-x-0 top-[20%] md:top-[16%] flex items-center justify-center pointer-events-none z-0 overflow-hidden px-4"
         aria-hidden="true"
@@ -155,7 +118,7 @@ export const Hero: React.FC = () => {
         </span>
       </div>
 
-      {/* 2. CENTER CHARACTER VIDEO: Exact uploaded video used as-is without conversion */}
+      {/* 2. CENTER CHARACTER VIDEO: Single native audio stream with perfect lip-sync */}
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-10 pb-0 overflow-hidden">
         <div className="relative w-auto h-[min(94svh,1000px)] flex items-end justify-center pointer-events-auto">
           <video
@@ -165,16 +128,15 @@ export const Hero: React.FC = () => {
             playsInline
             preload="auto"
             poster={`${import.meta.env.BASE_URL}portrait-bust.webp`}
-            onTimeUpdate={handleTimeUpdate}
             className="w-auto h-[min(94svh,1000px)] max-h-[94svh] object-contain transition-opacity duration-700 select-none"
           >
-            <source src={`${import.meta.env.BASE_URL}hero/9234814a-0148-4616-9979-ae9df0be1f40.webm`} type="video/webm" />
             <source src={`${import.meta.env.BASE_URL}hero/hero.webm`} type="video/webm" />
+            <source src={`${import.meta.env.BASE_URL}hero/9234814a-0148-4616-9979-ae9df0be1f40.webm`} type="video/webm" />
           </video>
         </div>
       </div>
 
-      {/* 3. DEFAULT SOUND BUTTON (Slightly down from top header bar, matching original circular design) */}
+      {/* 3. SINGLE SOUND BUTTON: Elegantly placed top-right, clear of top navigation */}
       <div className="absolute top-20 sm:top-24 right-6 sm:right-10 z-30">
         <button
           onClick={toggleSound}
@@ -227,7 +189,7 @@ export const Hero: React.FC = () => {
           </p>
         </div>
 
-        {/* Bottom-Right Block: Explore work -> on top, Let's talk & Résumé below + Footer Bar Sound Button */}
+        {/* Bottom-Right Block: Explore work -> on top, Let's talk & Résumé below */}
         <div className="flex flex-col items-start md:items-end gap-2.5 pointer-events-auto shrink-0 w-full md:w-auto">
           {/* Top Primary Button: Explore work -> */}
           <button
@@ -237,7 +199,7 @@ export const Hero: React.FC = () => {
             Explore work →
           </button>
 
-          {/* Bottom Secondary Row: Let's talk + Résumé ↓ + Footer Sound Button */}
+          {/* Bottom Secondary Row: Let's talk + Résumé ↓ */}
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <button
               onClick={() => scrollToTarget('#contact')}
@@ -254,28 +216,6 @@ export const Hero: React.FC = () => {
               <span>Résumé</span>
               <span className="text-[11px]">↓</span>
             </a>
-
-            {/* Quick sound toggle in footer bar */}
-            <button
-              onClick={toggleSound}
-              className="w-9 h-9 rounded-full border border-[var(--line-strong)] bg-[var(--card)]/80 backdrop-blur-xs text-[var(--ink)] flex items-center justify-center shadow-2xs hover:scale-105 active:scale-95 transition-all shrink-0"
-              aria-label={isMuted ? 'Unmute sound' : 'Mute sound'}
-              title={isMuted ? 'Turn Sound On' : 'Turn Sound Off'}
-            >
-              {isMuted ? (
-                <svg className="w-4 h-4 ml-0.5" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <line x1="23" y1="9" x2="17" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                  <line x1="17" y1="9" x2="23" y2="15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                </svg>
-              ) : (
-                <svg className="w-4 h-4 text-emerald-500" viewBox="0 0 24 24" fill="currentColor">
-                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
-                  <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" fill="none" />
-                </svg>
-              )}
-            </button>
           </div>
         </div>
       </div>
