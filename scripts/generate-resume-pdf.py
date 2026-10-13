@@ -1,0 +1,321 @@
+#!/usr/bin/env python3
+"""
+Generate a clean, professional, standards-compliant single-page PDF of Aditya Suresh Nakhale's resume.
+"""
+import os
+
+pdf_template = b"""%PDF-1.4
+1 0 obj
+<<
+  /Type /Catalog
+  /Pages 2 0 R
+>>
+endobj
+
+2 0 obj
+<<
+  /Type /Pages
+  /Kids [3 0 R]
+  /Count 1
+>>
+endobj
+
+3 0 obj
+<<
+  /Type /Page
+  /Parent 2 0 R
+  /MediaBox [0 0 595.28 841.89]
+  /Contents 4 0 R
+  /Resources <<
+    /Font <<
+      /F1 5 0 R
+      /F2 6 0 R
+    >>
+  >>
+>>
+endobj
+
+5 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica-Bold
+>>
+endobj
+
+6 0 obj
+<<
+  /Type /Font
+  /Subtype /Type1
+  /BaseFont /Helvetica
+>>
+endobj
+
+4 0 obj
+<<
+  /Length 3850
+>>
+stream
+BT
+/F1 18 Tf
+50 800 Td
+(ADITYA SURESH NAKHALE) Tj
+ET
+
+BT
+/F2 9 Tf
+50 786 Td
+(Pune, India  |  +91 93224 85330  |  adityanakhale0@gmail.com  |  linkedin.com/in/aditya-nakhale-a63b67319  |  github.com/AdityaNakhale) Tj
+ET
+
+BT
+0 0 0 rg
+0.5 w
+50 778 m 545 778 l S
+ET
+
+BT
+/F1 11 Tf
+50 762 Td
+(CAREER OBJECTIVE) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 748 Td
+(2026 BCA graduate and backend developer intern with hands-on experience building REST APIs, MVC-based services, and full-stack) Tj
+0 -11 Td
+(features for a live production application. Built and shipped a Prisma/PostgreSQL-backed data access layer, a Node.js/Nest.js/Next.js web) Tj
+0 -11 Td
+(application serving 1,000+ users, and Dropbox-integrated file handling for 500+ users. Comfortable across Java, JavaScript, and SQL,) Tj
+0 -11 Td
+(with strong fundamentals in OOP and MVC architecture. Seeking to grow into a full-time software engineering career through Google's) Tj
+0 -11 Td
+(Software Application Development Apprenticeship, contributing to production codebases while learning from experienced engineering) Tj
+0 -11 Td
+(teams.) Tj
+ET
+
+BT
+/F1 11 Tf
+50 670 Td
+(SKILLS) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 655 Td
+(Programming Languages: ) Tj
+/F2 8.5 Tf
+(C, C++, Java, JavaScript) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 642 Td
+(Backend & Web: ) Tj
+/F2 8.5 Tf
+(Node.js, Nest.js, Next.js, Servlets, JSP, REST APIs, HTTP, HTML, CSS) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 629 Td
+(Databases & ORM: ) Tj
+/F2 8.5 Tf
+(PostgreSQL, MySQL, Prisma ORM) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 616 Td
+(Concepts: ) Tj
+/F2 8.5 Tf
+(Object-Oriented Programming, MVC Architecture, API Design) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 603 Td
+(Tools: ) Tj
+/F2 8.5 Tf
+(Git, VS Code, Apache NetBeans, Google Workspace) Tj
+ET
+
+BT
+/F1 8.5 Tf
+50 590 Td
+(Soft Skills: ) Tj
+/F2 8.5 Tf
+(Teamwork, Problem Solving, Time Management, Cross-team Collaboration) Tj
+ET
+
+BT
+/F1 11 Tf
+50 568 Td
+(EXPERIENCE) Tj
+ET
+
+BT
+/F1 9 Tf
+50 553 Td
+(Backend Developer Intern - JK Innovative Pvt. Ltd.) Tj
+350 0 Td
+(Jun 2025 - Sep 2025) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 539 Td
+(- Built a REST API in Node.js integrated with PostgreSQL, supporting ~100 user requests per day for a live Career Portfolio Generator platform.) Tj
+0 -11 Td
+(- Designed a Prisma ORM data access layer that cut database query latency by 30%, improving overall application performance.) Tj
+0 -11 Td
+(- Delivered a Next.js frontend with a Nest.js backend serving 1,000+ users at 99.9% uptime and ~200ms average response time.) Tj
+0 -11 Td
+(- Implemented MVC architecture and integrated a MySQL database for core application logic.) Tj
+0 -11 Td
+(- Collaborated with a 5-person team to integrate Dropbox APIs for file sharing and storage across 500+ users, maintaining data consistency.) Tj
+0 -11 Td
+(- Used Git for version control, averaging 20+ commits per week and resolving merge conflicts to keep delivery on schedule.) Tj
+ET
+
+BT
+/F1 11 Tf
+50 458 Td
+(PROJECTS) Tj
+ET
+
+BT
+/F1 9 Tf
+50 443 Td
+(Food Rescue AI - Full-Stack Food Donation & NGO Matching Platform) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 429 Td
+(- Built a full-stack platform in Java (Spring Boot, Spring Data JPA/Hibernate) with Thymeleaf dashboards and a MySQL/PostgreSQL backend) Tj
+0 -11 Td
+(  to connect food donors with nearby NGOs and shelters in real time.) Tj
+0 -11 Td
+(- Designed a rule-based scoring system to allocate donations by proximity, expiry window, and NGO capacity, using the Google Maps) Tj
+0 -11 Td
+(  Geocoding and Distance Matrix APIs for route and distance calculations.) Tj
+0 -11 Td
+(- Implemented donor registration and listing flows, plus admin/NGO dashboards with real-time tracking across a four-stage lifecycle) Tj
+0 -11 Td
+(  (Pending -> Allocated -> Claimed -> Rescued) and impact reporting.) Tj
+ET
+
+BT
+/F1 9 Tf
+50 348 Td
+(Career Portfolio Generator for Students) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 334 Td
+(- Built with Java, Servlets, JSP, HTML, CSS, and MySQL, following MVC architecture.) Tj
+0 -11 Td
+(- Implemented dynamic form handling and content rendering to let students generate shareable portfolio pages.) Tj
+ET
+
+BT
+/F1 11 Tf
+50 298 Td
+(EDUCATION) Tj
+ET
+
+BT
+/F1 9 Tf
+50 283 Td
+(Bachelor of Computer Applications - Sant Gadge Baba Amravati University) Tj
+320 0 Td
+(Aug 2023 - 2026) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 270 Td
+(Amravati, India | CGPA: 6.5/10) Tj
+ET
+
+BT
+/F1 9 Tf
+50 252 Td
+(12th Board (HSC) - Nandgaon High School and Junior College) Tj
+320 0 Td
+(May 2021 - May 2022) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 239 Td
+(Nandgaon Khandeshwar, India | Percentage: 63.33%) Tj
+ET
+
+BT
+/F1 9 Tf
+50 221 Td
+(10th Board (SSC) - Nandgaon High School) Tj
+320 0 Td
+(May 2019 - May 2020) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 208 Td
+(Nandgaon Khandeshwar, India | Percentage: 73.40%) Tj
+ET
+
+BT
+/F1 11 Tf
+50 180 Td
+(CERTIFICATIONS & PROGRAMS) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 165 Td
+(Active participant, Google Cloud Arcade - public profile: skills.google/public_profiles/64a46582) Tj
+ET
+
+BT
+/F1 11 Tf
+50 140 Td
+(ACHIEVEMENTS) Tj
+ET
+
+BT
+/F2 8.5 Tf
+50 125 Td
+(- Won 1st Prize in a College Level Coding Competition.) Tj
+ET
+endstream
+endobj
+
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000380 00000 n 
+0000000257 00000 n 
+0000000318 00000 n 
+trailer
+<<
+  /Size 7
+  /Root 1 0 R
+>>
+startxref
+4280
+%%EOF
+"""
+
+public_pdf = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "public", "resume.pdf"))
+with open(public_pdf, "wb") as f:
+    f.write(pdf_template)
+print(f"Generated {public_pdf} successfully.")

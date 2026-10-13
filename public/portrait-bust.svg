@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 600" width="480" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#faf9f6"/>
+    </linearGradient>
+    <linearGradient id="hairGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#121214"/>
+      <stop offset="100%" stop-color="#1e1e24"/>
+    </linearGradient>
+    <linearGradient id="skin" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c98a5e"/>
+      <stop offset="100%" stop-color="#b8784d"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="50%" stop-color="#f4f4f4"/>
+      <stop offset="100%" stop-color="#e8e8e8"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="480" height="600" fill="url(#bg)"/>
+
+  <!-- Subtle glow halo -->
+  <circle cx="240" cy="240" r="190" fill="#f0ede6" opacity="0.6"/>
+
+  <!-- Neck & Chest Base -->
+  <path d="M210,310 L270,310 L276,365 L204,365 Z" fill="#b07044"/>
+  
+  <!-- White Collared Shirt -->
+  <g filter="url(#shadow)">
+    <!-- Shoulders and Torso -->
+    <path d="M110,430 C130,360 170,350 206,355 L240,410 L274,355 C310,350 350,360 370,430 L390,600 L90,600 Z" fill="url(#shirt)"/>
+    <!-- Collar Left -->
+    <path d="M206,355 L240,412 L224,420 L188,368 Z" fill="#ffffff" stroke="#e0e0e0" stroke-width="1.5"/>
+    <!-- Collar Right -->
+    <path d="M274,355 L240,412 L256,420 L292,368 Z" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="1.5"/>
+    <!-- Inner placket & buttons -->
+    <path d="M234,412 L246,412 L246,600 L234,600 Z" fill="#f0f0f0"/>
+    <circle cx="240" cy="455" r="3.5" fill="#d0d0d0"/>
+    <circle cx="240" cy="510" r="3.5" fill="#d0d0d0"/>
+    <circle cx="240" cy="565" r="3.5" fill="#d0d0d0"/>
+    <!-- Pocket outline -->
+    <path d="M285,460 L325,460 L325,510 L305,525 L285,510 Z" fill="none" stroke="#e5e5e5" stroke-width="2"/>
+    <!-- Fold shadows -->
+    <path d="M188,368 C175,410 160,490 145,600" fill="none" stroke="#eaeaea" stroke-width="2"/>
+    <path d="M292,368 C305,410 320,490 335,600" fill="none" stroke="#eaeaea" stroke-width="2"/>
+  </g>
+
+  <!-- Head & Ears -->
+  <ellipse cx="178" cy="250" rx="14" ry="24" fill="#b8784d"/>
+  <ellipse cx="302" cy="250" rx="14" ry="24" fill="#b8784d"/>
+  <!-- Head shape -->
+  <path d="M182,210 C182,150 298,150 298,210 C298,280 280,330 240,334 C200,330 182,280 182,210 Z" fill="url(#skin)"/>
+
+  <!-- Jaw shadow & definition -->
+  <path d="M200,300 Q240,332 280,300" fill="none" stroke="#a46237" stroke-width="2" opacity="0.6"/>
+
+  <!-- Modern Hair Pompadour/Volume -->
+  <path d="M174,210 C170,165 178,130 205,110 C235,90 270,95 295,115 C315,135 316,170 306,210 C300,190 286,175 270,170 C240,162 210,168 188,185 C180,192 176,202 174,210 Z" fill="url(#hairGrad)"/>
+  <path d="M178,160 C190,130 220,110 250,115 C275,120 298,140 304,168 C290,150 260,140 230,145 C205,150 188,160 178,160 Z" fill="#2c2c34" opacity="0.5"/>
+
+  <!-- Neat Mustache -->
+  <path d="M218,286 Q240,282 262,286 Q250,294 240,288 Q230,294 218,286 Z" fill="#1b1b1e"/>
+
+  <!-- Lips -->
+  <path d="M226,298 Q240,304 254,298" fill="none" stroke="#9e5632" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Iconic Black Sunglasses -->
+  <g filter="url(#shadow)">
+    <!-- Bridge -->
+    <rect x="234" y="222" width="12" height="5" rx="2" fill="#0d0d0f"/>
+    <!-- Left Lens Frame -->
+    <rect x="186" y="212" width="48" height="34" rx="8" fill="#0a0a0c" stroke="#1f1f22" stroke-width="2"/>
+    <!-- Right Lens Frame -->
+    <rect x="246" y="212" width="48" height="34" rx="8" fill="#0a0a0c" stroke="#1f1f22" stroke-width="2"/>
+    <!-- Glass sheen reflections -->
+    <path d="M192,218 L220,218 L206,238 L192,238 Z" fill="#ffffff" opacity="0.18"/>
+    <path d="M252,218 L280,218 L266,238 L252,238 Z" fill="#ffffff" opacity="0.18"/>
+    <!-- Temple bars -->
+    <path d="M186,220 L174,216" stroke="#0d0d0f" stroke-width="4" stroke-linecap="round"/>
+    <path d="M294,220 L306,216" stroke="#0d0d0f" stroke-width="4" stroke-linecap="round"/>
+  </g>
+</svg>
