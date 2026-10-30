@@ -18,7 +18,7 @@ export const WorkSection: React.FC = () => {
         />
 
         {/* Desktop Expanding Horizontal Accordion / Mobile Vertical Accordion */}
-        <div className="flex flex-col md:flex-row gap-4 h-auto md:h-[min(78svh,620px)] w-full">
+        <div className="flex flex-col md:flex-row gap-4 h-auto md:h-[clamp(560px,70svh,800px)] w-full">
           {PROJECTS.map((project) => {
             const isOpen = activeProjectId === project.id;
 
@@ -56,7 +56,7 @@ export const WorkSection: React.FC = () => {
                   </div>
                 ) : (
                   /* Open Full Panel: Left Info & Right Illustrative UI */
-                  <div className="h-full w-full p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 justify-between overflow-y-auto lg:overflow-hidden">
+                  <div className="h-full w-full p-6 sm:p-8 md:p-10 flex flex-col lg:flex-row gap-8 justify-between overflow-y-auto">
                     {/* Left Column: Details */}
                     <div className="flex-1 flex flex-col justify-between max-w-xl">
                       <div>

@@ -51,8 +51,8 @@ export const SkillsSection: React.FC = () => {
 
         {/* Grid + Sticky Inspector Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8 items-start">
-          {/* Periodic Table Grid (8 columns desktop, 4 columns mobile) */}
-          <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2.5 sm:gap-3">
+          {/* Periodic Table Grid (3-4 cols mobile, 6 cols tablet, 8 cols desktop) */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-2 sm:gap-3">
             {SKILLS.map((skill, index) => {
               const row = Math.floor(index / 8);
               const col = index % 8;

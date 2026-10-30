@@ -105,11 +105,11 @@ export const Hero: React.FC = () => {
     >
       {/* 1. GIANT GHOST WORD IN CENTER BACKGROUND (ADITYA) */}
       <div
-        className="absolute inset-x-0 top-[20%] md:top-[16%] flex items-center justify-center pointer-events-none z-0 overflow-hidden px-4"
+        className="absolute inset-x-0 top-[18%] md:top-[16%] flex items-center justify-center pointer-events-none z-0 overflow-hidden px-4"
         aria-hidden="true"
       >
         <span
-          className="text-[23vw] font-black leading-none tracking-tight select-none uppercase font-sans-tight text-[var(--ghost-text)] text-center w-full whitespace-nowrap transition-colors duration-300"
+          className="text-[clamp(3.5rem,20vw,22rem)] font-black leading-none tracking-tight select-none uppercase font-sans-tight text-[var(--ghost-text)] text-center w-full whitespace-nowrap transition-colors duration-300"
           style={{
             letterSpacing: '-0.02em',
           }}
@@ -118,9 +118,9 @@ export const Hero: React.FC = () => {
         </span>
       </div>
 
-      {/* 2. CENTER CHARACTER VIDEO: Single native audio stream with perfect lip-sync */}
+      {/* 2. CENTER CHARACTER VIDEO: Responsive height for mobile breathing room and desktop zoom out */}
       <div className="absolute inset-0 flex items-end justify-center pointer-events-none z-10 pb-0 overflow-hidden">
-        <div className="relative w-auto h-[min(94svh,1000px)] flex items-end justify-center pointer-events-auto">
+        <div className="relative w-auto h-[min(70svh,500px)] sm:h-[min(80svh,640px)] md:h-[min(92svh,950px)] max-h-[92svh] flex items-end justify-center pointer-events-auto">
           <video
             ref={videoRef}
             muted={isMuted}
@@ -128,7 +128,7 @@ export const Hero: React.FC = () => {
             playsInline
             preload="auto"
             poster={`${import.meta.env.BASE_URL}portrait-bust.webp`}
-            className="w-auto h-[min(94svh,1000px)] max-h-[94svh] object-contain transition-opacity duration-700 select-none"
+            className="w-auto h-[min(70svh,500px)] sm:h-[min(80svh,640px)] md:h-[min(92svh,950px)] max-h-[92svh] object-contain transition-opacity duration-700 select-none"
           >
             <source src={`${import.meta.env.BASE_URL}hero/hero.webm`} type="video/webm" />
             <source src={`${import.meta.env.BASE_URL}hero/9234814a-0148-4616-9979-ae9df0be1f40.webm`} type="video/webm" />
@@ -136,11 +136,11 @@ export const Hero: React.FC = () => {
         </div>
       </div>
 
-      {/* 3. SINGLE SOUND BUTTON: Elegantly placed top-right, clear of top navigation */}
-      <div className="absolute top-20 sm:top-24 right-6 sm:right-10 z-30">
+      {/* 3. SINGLE SOUND BUTTON: Clamped within grid margins across all zoom levels */}
+      <div className="absolute top-20 sm:top-24 right-4 sm:right-6 lg:right-[max(1.5rem,calc((100vw-1480px)/2+2rem))] z-30">
         <button
           onClick={toggleSound}
-          className="relative w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-[var(--ink)] text-[var(--paper)] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
+          className="relative w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[var(--ink)] text-[var(--paper)] flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
           aria-label={isMuted ? 'Unmute video sound' : 'Mute video sound'}
           title={isMuted ? 'Sound is Off — Click to turn Sound On' : 'Sound is On — Click to turn Sound Off'}
         >
@@ -170,7 +170,7 @@ export const Hero: React.FC = () => {
       </div>
 
       {/* 4. HERO FOREGROUND CONTENT: Two Clean Editorial Anchors */}
-      <div className="relative z-30 site-container w-full flex flex-col md:flex-row items-start md:items-end justify-between pt-24 pb-8 sm:pb-12 gap-8 pointer-events-none mt-auto">
+      <div className="relative z-30 site-container w-full flex flex-col md:flex-row items-start md:items-end justify-between pt-20 sm:pt-24 pb-8 sm:pb-12 gap-6 sm:gap-8 pointer-events-none mt-auto">
         {/* Bottom-Left Block: Kicker + Title + Subtitle */}
         <div className="max-w-xl pointer-events-auto">
           {/* Upper Kicker */}
@@ -179,7 +179,7 @@ export const Hero: React.FC = () => {
           </div>
 
           {/* Main Title: Full Stack Developer */}
-          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans-tight text-[var(--ink)] tracking-[-0.045em] leading-[0.92] mb-3">
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-bold font-sans-tight text-[var(--ink)] tracking-[-0.045em] leading-[0.92] mb-3">
             Full Stack<br />Developer.
           </h1>
 

@@ -154,7 +154,7 @@ export const AboutSection: React.FC = () => {
                 aria-label="Developer ID Card. Press enter or click to flip between front and back."
                 onClick={() => setIsFlipped(!isFlipped)}
                 onKeyDown={handleCardKeyDown}
-                className="w-[300px] h-[404px] cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[var(--ink)] rounded-[20px]"
+                className="w-[min(300px,calc(100vw-48px))] h-[min(404px,calc((100vw-48px)*1.35))] max-w-[300px] max-h-[404px] cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[var(--ink)] rounded-[20px]"
                 style={{ perspective: '1000px' }}
               >
                 <div

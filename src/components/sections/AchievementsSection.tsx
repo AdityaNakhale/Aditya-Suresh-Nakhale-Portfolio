@@ -139,7 +139,7 @@ export const AchievementsSection: React.FC = () => {
               return (
                 <div
                   key={item.id}
-                  className={`w-[clamp(340px,40vw,540px)] h-[clamp(260px,36vh,320px)] rounded-[28px] bg-[var(--card)] p-6 sm:p-8 flex flex-col justify-between transition-all duration-500 shrink-0 ${
+                  className={`w-[clamp(280px,80vw,520px)] h-[clamp(250px,36vh,320px)] rounded-[28px] bg-[var(--card)] p-5 sm:p-8 flex flex-col justify-between transition-all duration-500 shrink-0 ${
                     isCenter
                       ? '-translate-y-3 shadow-[0_24px_50px_-12px_rgba(0,0,0,0.12)]'
                       : 'translate-y-0 shadow-[0_8px_24px_-8px_rgba(0,0,0,0.05)]'
@@ -213,7 +213,7 @@ export const AchievementsSection: React.FC = () => {
             })}
 
             {/* Ending Track Card: "and counting →" */}
-            <div className="w-[280px] h-[clamp(260px,36vh,320px)] rounded-[28px] border-2 border-dashed border-[var(--line-strong)] bg-[var(--card)]/40 flex flex-col items-center justify-center text-center p-6 shrink-0">
+            <div className="w-[clamp(240px,68vw,280px)] h-[clamp(250px,36vh,320px)] rounded-[28px] border-2 border-dashed border-[var(--line-strong)] bg-[var(--card)]/40 flex flex-col items-center justify-center text-center p-6 shrink-0">
               <span className="font-mono text-xs uppercase tracking-wider text-[var(--mute)] block mb-2">
                 Continuous Growth
               </span>
