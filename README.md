@@ -1,81 +1,82 @@
-# Aditya Suresh Nakhale — Personal Portfolio
+# Aditya Suresh Nakhale — Portfolio
 
-A quiet, editorial, high-performance portfolio website for **Aditya Suresh Nakhale** (Full Stack Developer & Backend Developer Intern). Designed according to an Awwwards "Site of the Day" aesthetic in calm grayscale (white, black, and grays only), with real brand logos preserving their official hues.
+> **Website:** [https://adityanakhale.tech](https://adityanakhale.tech)
+
+A modern, high-performance personal portfolio website for **Aditya Suresh Nakhale** (Full Stack Developer & Backend Developer Intern). Crafted with a clean editorial aesthetic in monochrome with subtle accent highlights, featuring responsive fluid layouts, smooth physics-based interactions, and interactive project showcases.
 
 ---
 
-## 1. Quick Start
+## 🚀 Tech Stack
+
+- **Framework:** [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
+- **Bundler:** [Vite](https://vitejs.dev/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Animations & Physics:** [Motion](https://motion.dev/)
+- **Smooth Scrolling:** [Lenis](https://lenis.darkroom.engineering/)
+- **Icons:** [Lucide React](https://lucide.dev/) + Vector SVG brand marks
+- **Typography:** Instrument Serif, Inter Tight, and JetBrains Mono
+
+---
+
+## ✨ Features
+
+- **Dynamic Hero Section:** Transparent character video with synchronized sound toggle and automated pause detection when scrolled out of view.
+- **Hanging 3D ID Badge:** Physics-based damped pendulum swing that responds to cursor velocity, complete with an interactive 3D flip card.
+- **Interactive Stack Explorer:** Responsive periodic table layout categorizing backend, languages, databases, and architectural concepts with element inspector view.
+- **Work Showcase:** Expanding horizontal accordion on desktop and smooth vertical stack on mobile with live interactive mini-UIs.
+- **Chronological Experience Spine:** Connected chronological path tracing internships, education, and milestones.
+- **Fluid & Device-Adaptive:** Clamped responsive math ensuring layouts scale gracefully across phones, tablets, laptops, and ultra-wide/zoomed-out displays.
+- **Dark / Light Theme:** Integrated theme switcher with persistent user preference and smooth color transitions.
+
+---
+
+## 🛠️ Local Development
 
 ### Prerequisites
-- Node.js 18+ or 20+
+- Node.js (version 18 or higher)
 - npm or bun
 
-### Run Locally
-```bash
-# Install dependencies
-npm install
+### Getting Started
 
-# Start development server on port 3000
-npm run dev
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/AdityaNakhale/Aditya-Suresh-Nakhale-Portfolio.git
+   cd Aditya-Suresh-Nakhale-Portfolio
+   ```
 
-# Build for production
-npm run build
-```
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
----
+3. **Start the local development server:**
+   ```bash
+   npm run dev
+   ```
+   Open `http://localhost:3000` in your browser.
 
-## 2. Sections Table
+4. **Build for production:**
+   ```bash
+   npm run build
+   ```
 
-| Index | Section | Component | Key Highlights & Mechanics |
-| :--- | :--- | :--- | :--- |
-| **00** | **Navigation** | `Navigation.tsx` | Initials mark rotating on hover, frosted glass pill, sliding ink indicator, 2px top scroll progress, full-screen mobile menu. |
-| **01** | **Hero** | `hero/Hero.tsx` | Central aspect video with `mix-blend-mode: multiply`, ghost uppercase name, muted loop, voice autoplay unlock, IntersectionObserver auto-pause (<35%), ▶/❚❚ sound toggle. |
-| **02** | **About** | `sections/AboutSection.tsx` | 3-column equal height layout. Verbatim summary, hanging lanyard developer ID card with damped pendulum swing & 3D hover/keyboard flip. Quick facts. |
-| **03** | **Skills** | `sections/SkillsSection.tsx` | Periodic table of stack (8 cols desktop / 4 mobile), category filter chips, diagonal wave reveal, sticky inspector with 150px logo pop animation & soft glow. |
-| **04** | **Work** | `sections/WorkSection.tsx` | Expanding accordion gallery (`min(78svh, 600px)`). Open panel shows 2-col features, tech chips, and illustrative grayscale mini-UI. |
-| **05** | **Certifications** | `sections/CertificationsSection.tsx` | White band with hairline borders. Sticky heading, numbered list with ink-flood hover (`scaleX(0→1)`), external profile link. |
-| **06** | **Experience** | `sections/ExperienceSection.tsx` | Education and experience unified into a single chronological path. Vertical spine draws dynamically as you scroll; ends with "Next — Your team?". |
-| **07** | **Achievements** | `sections/AchievementsSection.tsx` | Pinned horizontal gallery (`100svh` sticky). Cards slide on scroll, easeOutQuart count-up numbers over 1.4s, center card 12px lift. |
-| **08** | **Contact & Footer** | `sections/ContactSection.tsx` | Hopping interactive letter bounce heading, large underlined email with "Copied ✓" chip, spinning circular badge, social links. |
-
----
-
-## 3. Hero Video Pipeline
-
-To process or rebuild the hero video from a raw source introduction video (`intro.mp4` or `intro.mov`):
-
-```bash
-# Run the Python script with an input video
-python3 scripts/build-hero-assets.py path/to/intro.mp4
-```
-
-### Script Execution Steps (`scripts/build-hero-assets.py`):
-1. **Centering & Cropping**: Uses FFmpeg crop filter around the speaker, scaled to 768px wide.
-2. **Background Whitening**: Applies `colorlevels=rimax=0.98:gimax=0.98:bimax=0.98` so background tones blend into `#f4f2ee`.
-3. **Seamless Looping**: Exports H.264 `public/hero/hero.mp4` and VP9 `public/hero/hero.webm` with sample-accurate audio cross-fade.
-4. **Portrait Extraction**: Saves a 480×600 head-to-shirt crop at `public/portrait-bust.webp` and a 1200×630 OpenGraph card at `public/og.jpg`.
+5. **Preview the production build:**
+   ```bash
+   npm run preview
+   ```
 
 ---
 
-## 4. Brand Logos & Licenses
+## 📦 Deployment
 
-Brand SVGs in `public/logos/` are used strictly for identification purposes representing technologies and platforms cited in Aditya's official résumé:
+This website is automatically deployed to the custom domain **[adityanakhale.tech](https://adityanakhale.tech)** via GitHub Pages and GitHub Actions on each push to the `main` branch.
 
-- **Java**: Oracle Corporation
-- **JavaScript**: OpenJS Foundation
-- **C / C++**: ISO / Standard C++ Foundation
-- **Node.js**: OpenJS Foundation (MIT)
-- **Nest.js**: Kamil Myśliwiec (MIT)
-- **Next.js**: Vercel Inc. (MIT)
-- **PostgreSQL**: PostgreSQL Global Development Group
-- **MySQL**: Oracle Corporation
-- **Prisma ORM**: Prisma Data, Inc. (Apache 2.0)
-- **Git**: Software Freedom Conservancy (GPLv2)
-- **VS Code**: Microsoft Corporation (MIT)
-- **Apache NetBeans**: Apache Software Foundation (Apache 2.0)
-- **Google / Google Cloud / Google Maps**: Google LLC
-- **Dropbox**: Dropbox, Inc.
-- **Spring Boot / Hibernate / Thymeleaf**: VMware / Broadcom / Thymeleaf Team
-- **HackerRank**: HackerRank Inc.
+- Domain configuration is maintained via `public/CNAME`.
+- Continuous integration and deployment is managed through `.github/workflows/deploy.yml`.
 
-All vector logos are stored locally in `public/logos/` accompanied by `public/logos/LICENSE`. No third-party CDN or external scripts are invoked at runtime.
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
+Technology brand marks and logos are property of their respective owners and used solely for identification purposes.
